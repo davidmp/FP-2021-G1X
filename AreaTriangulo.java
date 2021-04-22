@@ -4,7 +4,7 @@ static Scanner teclado=new Scanner(System.in);
 public static void main(String[] arg){
   //definicion de variables u otros
   System.out.println("Ejercicio 01: Area Triangulo");
-  int b, h, area;
+  int b=0, h, area;
   //Datos de entrada
   System.out.println("Ingrese Base:");
   b=teclado.nextInt();
@@ -14,5 +14,4 @@ public static void main(String[] arg){
   area=(b*h)/2;
   //Datos de salida
   System.out.println("El area es: "+area);
-}
-}
+}}
