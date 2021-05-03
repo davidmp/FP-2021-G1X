@@ -26,6 +26,7 @@ def estCondicional02():
     montoP=cantidadX*75
   #Datos de salida
   print("El monto a pagar es:", montoP)
+<<<<<<< HEAD
 def bonoDocente():
   #definir Variables
   bonoObtenido=0.0
@@ -45,3 +46,10 @@ def bonoDocente():
 #estCondicional02()
 #estCondicional01()
 bonoDocente()
+=======
+def ejercio01():
+  
+estCondicional02()
+
+#estCondicional01()
+>>>>>>> bf1c9ca5ff6e72be4ae35b4afa5d2db76d8b6e9f
