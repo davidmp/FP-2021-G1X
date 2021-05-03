@@ -26,7 +26,6 @@ def estCondicional02():
     montoP=cantidadX*75
   #Datos de salida
   print("El monto a pagar es:", montoP)
-
 def bonoDocente():
   #definir Variables
   bonoObtenido=0.0
@@ -43,8 +42,26 @@ def bonoDocente():
   #Datos de salida
   print("El docente obtendra un bono de:", bonoObtenido )
 
+def paquetes():
+  #Definir Variables
+  resultPaquete=""
+  #Datos de entrada
+  montoRvDic=float(input("Ingrese el monto que recibe en diciembre:"))
+  #Proceso
+  if montoRvDic>=50000:
+    resultPaquete="Paquete A"
+  elif montoRvDic>=20000 and montoRvDic<50000:
+    resultPaquete="Paquete B"
+  elif montoRvDic>=10000 and montoRvDic<20000:
+    resultPaquete="Paquete C"
+  else:
+    resultPaquete="Paquete D"
+  #Datos de salida
+  print("La persona comprara el: ", resultPaquete)
+
 #estCondicional02()
 #estCondicional01()
-bonoDocente()
+#bonoDocente()
+paquetes()
 
 #estCondicional01()
