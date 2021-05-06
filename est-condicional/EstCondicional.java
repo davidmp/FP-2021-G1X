@@ -28,6 +28,7 @@ class EstCondicional{
     System.out.println("Ingrese la puntuacion obtenida:");
     puntuacionObtenida=teclado.nextDouble();
     //Proceso
+
     if (puntuacionObtenida<=100 && puntuacionObtenida>=0){
       bonoObtenido=salarioMinimo;
     }else if(puntuacionObtenida >=101 && puntuacionObtenida<=150){
