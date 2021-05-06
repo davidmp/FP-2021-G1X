@@ -26,7 +26,6 @@ def estCondicional02():
     montoP=cantidadX*75
   #Datos de salida
   print("El monto a pagar es:", montoP)
-
 def bonoDocente():
   #definir Variables
   bonoObtenido=0.0
@@ -43,8 +42,26 @@ def bonoDocente():
   #Datos de salida
   print("El docente obtendra un bono de:", bonoObtenido )
 
+def paquetesJDQC():
+  #Definir Variables
+  resultPaqueteDmp=""
+  #Datos de entrada
+  montoRvDiDmpc=float(input("Ingrese el monto que recibe en diciembre:"))
+  #Proceso
+  if montoRvDiDmpc>=50000:
+    resultPaqueteDmp="Paquete A"
+  elif montoRvDiDmpc>=20000 and resultPaqueteDmp<50000:
+    resultPaqueteDmp="Paquete B"
+  elif montoRvDiDmpc>=10000 and montoRvDiDmpc<20000:
+    resultPaqueteDmp="Paquete C"
+  else:
+    resultPaqueteDmp="Paquete D"
+  #Datos de salida
+  print("La persona comprara el: ", resultPaqueteDmp)
+
 #estCondicional02()
 #estCondicional01()
-bonoDocente()
+#bonoDocente()
+paquetesJDQC()
 
 #estCondicional01()
