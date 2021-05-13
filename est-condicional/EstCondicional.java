@@ -74,8 +74,7 @@ class EstCondicional{
     default: System.out.println("No Existe la Opción!!..intente nuevamente!"); break;
     }
     //Datos de salida:
-    System.out.println("El postulante obtuvo la nota: "+notaFinal+" y es del area de:
-    "+areaCarrera);
+    System.out.println("El postulante obtuvo la nota: "+notaFinal+" y es del area de:"+areaCarrera);
   }
 
   
