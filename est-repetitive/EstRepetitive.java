@@ -36,7 +36,7 @@ public class EstRepetitive {
             System.out.println("Ingrese el valor de la posicion "+contador+":");
             numeros=objTeclado.nextDouble();
             sumaNumeros=sumaNumeros+numeros;
-            contador++;
+            contador++; //contador=contador+1;
         }
         System.out.println("La suma de los 10 numeros es:"+sumaNumeros);
     }
@@ -68,27 +68,28 @@ public class EstRepetitive {
         }
         System.out.println("La suma de los 10 numeros es:"+sumaNumeros);
     }    
-    public static void menuMain(){
-        String mensaje="Seleccion el algoritmo que desea ejecutar:"+
+
+    public static void menuMain() {
+        String mensaje="Seleccion el algoritmo que desea probar:"+
         "\n1=suma10NumerosMientras"+
-        "\n2=suma10NumerosHacerMientras "+
+        "\n2=suma10NumerosHacerMientras"+
         "\n3=suma10NumerosPara"+
-        "\n0=Salir del programa";
-        
+        "\n0=Salir del sistema"
+        ;
         System.out.println(mensaje);
-        int opcion=0;
-        do{
-            opcion=objTeclado.nextInt();
-            switch(opcion){
-                case 1: suma10NumerosMientras();break;
-                case 2: suma10NumerosHacerMientras();;break;
-                case 3: suma10NumerosPara();;break;
-                case 4: suma10NumerosMientras();break;
-            }
-            if(opcion!=0)
-            System.out.println("\n Desea seguir probando: "+mensaje);
-            
-        }while(opcion!=0);        
+        int opciones=objTeclado.nextInt();         
+        do {
+            switch (opciones) {
+                case 1: suma10NumerosMientras(); break;
+                case 2: suma10NumerosHacerMientras(); break;
+                case 3: suma10NumerosPara(); break;        
+                default:System.out.println("Opcion no existe");   break;
+            }            
+            if (opciones!=0){ 
+            System.out.println("Desea probar otraves? "+mensaje);
+            opciones=objTeclado.nextInt(); 
+            }            
+        }while (opciones!=0);
     }
 
     public static void main(String[] args) { 
