@@ -6,6 +6,7 @@ public class SubProgramas {
     
     Scanner teclado=new Scanner(System.in);
 
+    //Calcula el factorial de cualquier numero
     public static int factorial(int numero) {
         int factorialResult=1;
         if(numero>1){
