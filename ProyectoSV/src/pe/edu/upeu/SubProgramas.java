@@ -16,7 +16,7 @@ public class SubProgramas {
         }
         return factorialResult;        
     }
-
+    //Calcula la potencia de cualquier numero
     public double potencia(int x, int i) {
         return Math.pow(x, i);
     }
