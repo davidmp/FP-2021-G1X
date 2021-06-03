@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insertar una imagen en un Canvas</title>
+</head>
+<body>
+<h1>Apareamiento de conejos</h1>
+
+
+<canvas height="3000" width="4000" id="micanvas"></canvas>
+
+<script>
+var canvas = document.getElementById("micanvas");
+var ctx = canvas.getContext("2d");
+var img = new Image();
+img.src = "conejo3.png";
+
+
+img.onload = function(){
+var cantidad = prompt("Ingrese cantidad de mes:");
+var result=0;
+var incx=0;
+var incy=0;
+for(i=1; i<=cantidad;i++){
+	//result=fibonaciConejo(i);
+	result=fibonaciRecur(i);
+	console.log(result);
+	ctx.font = "bold 22px sans-serif";
+	for(j=1; j<=result;j++){
+		ctx.drawImage(img, incx, incy);
+		ctx.fillText("c"+j,incx+15,incy+15);
+		console.log("Ingreso"+j+"Posicion x: "+incx+" Posicion y:"+incy);
+		incx=incx+100;
+
+	}
+	incx=0;
+	incy=incy+100;
+}
+}
+
+    function fibonaci( numero) {
+        var num1=0, num2=1, temp=0, result=0;
+        var contador=0;
+        if(numero>1){
+            while (contador < numero-1) {                
+                temp=num2;
+                result=num1+num2;
+                num1=temp;
+                num2=result;                
+                contador++;
+            } 
+            return result;           
+        }else{
+            return numero;
+        }      
+    }
+
+    function fibonaciRecur( numero) {
+        if(numero>1){            
+            return fibonaciRecur(numero-1)+fibonaciRecur(numero-2);           
+        }else{
+            return numero;
+        }      
+    }	
+
+</script>
+
+
+</body>
+</html>
