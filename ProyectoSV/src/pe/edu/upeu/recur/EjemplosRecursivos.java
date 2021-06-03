@@ -62,8 +62,6 @@ public class EjemplosRecursivos {
 
 
     public long fibonaciRecur(int numero) {
-        long num1=0, num2=1, temp=0, result=0;
-        int contador=0;
         if(numero>1){            
             return fibonaciRecur(numero-1)+fibonaciRecur(numero-2);           
         }else{
