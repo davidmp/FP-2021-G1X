@@ -56,9 +56,76 @@ public class MainGUI extends JFrame implements ActionListener{
         this.setVisible(true);
     }
 
+    public void panelTabla(Container contai){
+        contai.setBackground(new Color(0,0,255));
+        table = new JTable(obj.reporData());
+        scrollPane = new JScrollPane(table);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.invalidate();
+        scrollPane.validate();
+        scrollPane.repaint();
+        contai.add(BorderLayout.CENTER, scrollPane);
+        contai.invalidate();
+        contai.validate();
+        contai.repaint();
+        }
+
+        public void pintarConejos(Graphics g){
+            int fibo=0;
+            int incx=0;
+            int incy=0;
+            for(int x=1;x<=numeros;x++){
+            fibo=obj.fibonaciRecur(x);
+            for(int y=1;y<=fibo;y++){
+            g.drawImage(image, incx, incy, null);
+            incx=incx+100;
+            }
+            incx=0;
+            incy=incy+100;
+            }
+        }
+            
+
+        public void panelDibujoImagen(Container contai){
+            numeros=Integer.parseInt(texto.getText());
+            try {
+            image=ImageIO.read(obj.getFile("images/conejo3.png"));
+            } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            }
+            panel = new JPanel(){
+            private static final long serialVersionUID = 1L;
+            @Override
+            protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            pintarConejos(g);
+            }
+            };
+            panel.setPreferredSize(new Dimension(2000, 1000));
+            scrollPane = new JScrollPane(panel);
+            scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+            scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+            scrollPane.invalidate();
+            scrollPane.validate();
+            scrollPane.repaint();
+            contai.add(BorderLayout.CENTER, scrollPane);
+            contai.invalidate();
+            contai.validate();
+            contai.repaint();
+            }        
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
+        Container contai=this.getContentPane();
+        contai.remove(scrollPane);
+
+        if(e.getSource()==m11){
+        panelTabla(contai);
+        }
+        if(e.getSource()==send){
+        panelDibujoImagen(contai);
+        } 
+               
+        }
 }
