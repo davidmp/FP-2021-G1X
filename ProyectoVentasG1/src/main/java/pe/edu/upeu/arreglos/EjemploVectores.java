@@ -53,10 +53,25 @@ public class EjemploVectores {
         return vector;
     }
 
+
+    public static void masEjemploVectores() {
+        double[] vectorA={12,15.3,6,2.5,3.6,6.2};
+        System.out.println("Tamanho vectorA es:"+vectorA.length);
+        String[] vectorB={"A",	"A",	"A",	"A",	"B",	"A",	"2.5",	"A","A","5" };
+        System.out.println("Tamanho vectorB es:"+vectorB.length);
+        Object[] vectorX={"A",	1,	2.3,	"D",	"E",	"F",	11,	"H",	"I",false,	'T'};
+        System.out.println("Tamanho vectorX es:"+vectorX.length);
+
+        char[] vecX={'+',	'/',	'*',	'-', 'A', '2'};
+        System.out.println("Tamanho vecX es:"+vecX.length);
+
+    }
+
     public static void main(String[] args) {
         conceptosVectores();
         System.out.println("Ejercicio 01");
         rellenarVector(10);
+        masEjemploVectores();
     }
 
 }
