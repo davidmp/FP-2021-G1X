@@ -21,16 +21,38 @@ public class EjemploMatrices{
         //Cambiar el elemento 12 de la matriz maX por 16
         maX[2][1]=16;
         Scanner sc=new Scanner(System.in);
-        System.out.println("Ingrese un valor en los indices 2,2");
+       /* System.out.println("Ingrese un valor en los indices 2,2");
         maX[2][2]=sc.nextInt();
 
         System.out.println("Defina el indice para fila:");
         int iFx=sc.nextInt(); 
+        System.out.println("Defina el indice para columna:");
         int iCx=sc.nextInt(); 
         System.out.println("Ingrese un valor en los indices "+iFx+", "+iCx+":");
-        maX[iFx][iCx]=sc.nextInt();        
+        maX[iFx][iCx]=sc.nextInt();    */    
 
         imprimirMatriz(maX);
+
+        //defenir matrices sin dimensiones
+        int[][]  matrizN;
+        //definiendo dimensiones a una matriz
+        System.out.println("Ingrese la dimension en fila para la MatrizN=");
+        int inFi=sc.nextInt();
+        System.out.println("Ingrese la dimension en columna para la MatrizN=");
+        int inCo=sc.nextInt();
+        matrizN=new int[inFi][inCo]; 
+        int vi=0;
+        //Rellenando una matriz con una serie de numeros
+        for (int f = 0; f < matrizN.length; f++) {
+            for (int c = 0; c < matrizN[0].length; c++) {
+                System.out.println("Ingrese un valor en matrizN["+f+"]["+c+"]:=");
+                matrizN[f][c]=sc.nextInt();
+                vi=vi+2;
+            }            
+        }      
+        System.out.println("la nueva matrizN es de: "+matrizN.length+"x"+matrizN[0].length);
+        imprimirMatriz(matrizN);    
+
     }
 
     public void imprimirMatriz(int[][] matriz) {
