@@ -64,9 +64,29 @@ public class EjemploMatrices{
        } 
     }
 
+    public void imprimirMatriz(Object[][] matriz) {
+        for (int f = 0; f < matriz.length; f++) {
+            for (int c = 0; c < matriz[0].length; c++) {
+                System.out.print(matriz[f][c]+"\t");
+            }
+            System.out.println("");
+        } 
+     }    
+
+    public void reporteProductos() {
+        Object[][] mProductos={
+                    {"P0001","Manzana",	3.5, 50 },
+                    {"P0002","Pera",	4.6, 20 },
+                    {"P0003","Naranja",	2, 2 }
+                    };
+        imprimirMatriz(mProductos);
+    }
+
+
     public static void main(String[] args) {
        EjemploMatrices objEM=new EjemploMatrices(); 
-       objEM.conceptosMatrices();
+       //objEM.conceptosMatrices();
+       objEM.reporteProductos();
     }
 
 }
