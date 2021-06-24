@@ -2,7 +2,7 @@
 *.class
 *.jar
 *.vscode
-#**/*
+**/target/*
 !**/*.go
 !**/*.java
 !**/*.dart
