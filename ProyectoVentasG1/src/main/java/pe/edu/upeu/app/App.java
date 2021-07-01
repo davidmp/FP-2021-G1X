@@ -1,6 +1,7 @@
 package pe.edu.upeu.app;
 
 import pe.edu.upeu.dao.CategoriaDAO;
+import pe.edu.upeu.dao.ProductoDAO;
 import pe.edu.upeu.dao.UsuarioDAO;
 import pe.edu.upeu.gui.MainGUI;
 import pe.edu.upeu.util.TecladoRead;
@@ -22,13 +23,14 @@ public class App{
         ;     
         CategoriaDAO daoCat;   
         UsuarioDAO daoUso;
+        ProductoDAO proDao;
         TecladoRead tre=new TecladoRead();
         int opciones=tre.read(0, mensaje);         
         do {
             switch (opciones) {
                 case 1: daoCat=new CategoriaDAO(); daoCat.registrarCategoria(); break;
                 case 11: daoCat=new CategoriaDAO(); daoCat.reporteCategoria(); break;
-                case 2:  break;
+                case 2: proDao=new ProductoDAO(); proDao.registrarProducto(); break;
                 case 3: daoUso=new UsuarioDAO(); daoUso.registrarUsuario();  break;        
                 default:System.out.println("Opcion no existe");   break;
             }            
