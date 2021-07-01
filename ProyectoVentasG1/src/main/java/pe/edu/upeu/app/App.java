@@ -39,8 +39,25 @@ public class App{
         }while (opciones!=0);
     }
 
+    public static void validAccessSystem() {
+        System.out.println("******************* Sistema de Ventas ******************");
+        TecladoRead tr=new TecladoRead();
+        UsuarioDAO uDao=new UsuarioDAO();
+        String usuario=tr.read("", "Ingrese su Usuario:");
+        System.out.println("Ingres su clave:");
+        char[] clave=System.console().readPassword();
+        if (uDao.login(usuario,clave)) {
+            menuMain();
+        } else {
+            System.out.println("Error de autentifiacion.......Intetente nuevamente!!");
+            validAccessSystem();
+        }
+    }
+
+
     public static void main( String[] args ){
-        menuMain();
+        //menuMain();
+        validAccessSystem();
         //new MainGUI();
     }
 }

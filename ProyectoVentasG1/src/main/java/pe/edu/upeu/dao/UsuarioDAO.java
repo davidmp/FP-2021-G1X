@@ -17,18 +17,36 @@ public class UsuarioDAO extends AppCrud{
     
     public void registrarUsuario() {
         usuTO=new UsuarioTO();
-        String usuario=tre.read("", "Ingrese un Usuario:");
-        usuTO.setUsuario(usuario);
-        usuTO.setPerfil(tre.read("", "Ingrese el perfil (ADMIN, VENDEDOR, CAJERO):"));
-        lar=new LeerArchivo("Usuario.txt");
-        usuTO.setIdUsuario(generarId(lar, 0, "U", 1));
-        Console cons=System.console();
-        System.out.println("Ingrese su clave:");
-        char[] clave=cons.readPassword();
-        usuTO.setClave(String.valueOf(clave));
-        lar=new LeerArchivo("Usuario.txt");
-        agregarContenido(lar, usuTO);
+        String usuario=tre.read("", "Ingrese un Usuario:").toLowerCase();
+        if(validExist(usuario)){
+            usuTO.setUsuario(usuario);
+            usuTO.setPerfil(tre.read("", "Ingrese el perfil (ADMIN, VENDEDOR, CAJERO):").toUpperCase());
+            lar=new LeerArchivo("Usuario.txt");
+            usuTO.setIdUsuario(generarId(lar, 0, "U", 1));
+            Console cons=System.console();
+            System.out.println("Ingrese su clave:");
+            char[] clave=cons.readPassword();
+            usuTO.setClave(String.valueOf(clave));
+            lar=new LeerArchivo("Usuario.txt");
+            agregarContenido(lar, usuTO);
+        }else{
+            System.out.println("El usuario ya existe .....Pruebe con cntro usuario!!");
+            registrarUsuario();
+        }
+
     }
+
+    public boolean validExist(String usuario) {
+        lar=new LeerArchivo("Usuario.txt");
+        Object[][] data=buscarContenido(lar, 1, usuario);
+        if (data!=null && data.length>0) {
+            return false;
+        }else{
+            return true;
+        }       
+        
+    }
+
 
     public boolean login(String usuario, char[] clave) {
         lar=new LeerArchivo("Usuario.txt");
@@ -38,5 +56,5 @@ public class UsuarioDAO extends AppCrud{
         }
         return false;
     }
-    
+
 }
