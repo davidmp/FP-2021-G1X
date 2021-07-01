@@ -29,4 +29,14 @@ public class UsuarioDAO extends AppCrud{
         lar=new LeerArchivo("Usuario.txt");
         agregarContenido(lar, usuTO);
     }
+
+    public boolean login(String usuario, char[] clave) {
+        lar=new LeerArchivo("Usuario.txt");
+        Object[][] data=buscarContenido(lar, 1, usuario);
+        if (data!=null && data.length==1 && data[0][2].equals(String.valueOf(clave))) {
+            return true;
+        }
+        return false;
+    }
+    
 }
