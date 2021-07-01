@@ -1,8 +1,6 @@
 package pe.edu.upeu.modelo;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Data
 public class ProductoTO {
