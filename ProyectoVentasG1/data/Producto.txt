@@ -1,0 +1,2 @@
+P1	Manzana	Kilos	C1	4.0	0.004	30.0
+P2	Naranja	Kilos	C1	3.5	0.005	40.0
