@@ -24,12 +24,24 @@ public class VentaDAO extends AppCrud{
     public void registroVentaGeneral() {
         VentaTO vTO=crearVenta();
         String continuar="SI";
+        double precioTotalX=0;
         do {
             VentaDetalleTO vdTOX=carritoVenta(vTO);
+            precioTotalX=precioTotalX+vdTOX.getPrecioTotal();
             continuar=tre.read("", "Desea algun producto mas? (SI=S/NO=N):").toUpperCase();
         } while (continuar.charAt(0)=='S');
-
-
+        vTO.setPrecioTotal(precioTotalX);
+        vTO.setNetoTotal(precioTotalX/1.18);
+        vTO.setIgv(vTO.getNetoTotal()*0.18);
+        
+        ut.pintarLine('H', 20);        
+        System.out.println("Precio Neto S/.:"+        
+        vTO.getNetoTotal()+" | IGV S/.: "+vTO.getIgv()+" | Total a pagar S/."+ 
+        vTO.getPrecioTotal());        
+        ut.pintarLine('H', 20);        
+    
+        lar=new LeerArchivo("Venta.txt");
+        editarRegistro(lar, 0, vTO.getIdVenta(), vTO);
     }
 
     public VentaTO crearVenta() {
@@ -47,8 +59,25 @@ public class VentaDAO extends AppCrud{
     }
 
     public VentaDetalleTO carritoVenta(VentaTO vTO) {
-        
-        return null;
+        ut.clearConsole();
+        System.out.println("*************Agregar Productos a carrito de ventas***********");
+        mostrarProductos();
+        vdTO=new VentaDetalleTO();
+        vdTO.setIdProducto(tre.read("", "Ingrese el ID del Producto:"));
+        vdTO.setIdVenta(vTO.getIdVenta());
+        lar=new LeerArchivo("VentaDetalle.txt");
+        vdTO.setIdVentaDetalle(generarId(lar, 0, "DV", 2));
+        LeerArchivo larX=new LeerArchivo("Producto.txt");
+        Object[][] dataP=buscarContenido(larX, 0,vdTO.getIdProducto());
+        double porcentUt=Double.parseDouble(String.valueOf(dataP[0][5]));
+        double pUnit=Double.parseDouble(String.valueOf(dataP[0][4]));
+        vdTO.setPorcentUtil(porcentUt);
+        vdTO.setPrecioUnit(pUnit+pUnit*porcentUt);
+        vdTO.setCantiad(tre.read(0.0, "Ingrese cantidad:"));
+        vdTO.setPrecioTotal(vdTO.getCantiad()*vdTO.getPrecioUnit());
+        lar=new LeerArchivo("VentaDetalle.txt");
+        agregarContenido(lar, vdTO);
+        return vdTO;
     }
 
     public void mostrarProductos() {
