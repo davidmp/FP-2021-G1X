@@ -6,12 +6,16 @@ import pe.edu.upeu.dao.UsuarioDAO;
 import pe.edu.upeu.dao.VentaDAO;
 import pe.edu.upeu.gui.MainGUI;
 import pe.edu.upeu.util.TecladoRead;
+import org.fusesource.jansi.Ansi;
+import org.fusesource.jansi.AnsiConsole;
+import static org.fusesource.jansi.Ansi.Color.*;
 
 /**
  * Hello world!
  *
  */
 public class App{
+    static Ansi color=new Ansi();
 
     public static void menuMain() {
         String mensaje="Seleccion el algoritmo que desea probar:"+
@@ -38,11 +42,17 @@ public class App{
                 case 4: ventDao=new VentaDAO(); ventDao.registroVentaGeneral(); break;   
                 case 41: ventDao=new VentaDAO(); ventDao.reportarVentasRangoFecha(); break;   
                 default:System.out.println("Opcion no existe");   break;
-            }            
+            }       
+                 
             if (opciones!=0){ 
-            System.out.println("Desea probar otraves? ");
-            opciones=tre.read(0, mensaje);
-            }            
+            System.out.println();
+            String continuar=tre.read("","Desea continuar en el sistemas? SI=S/NO=N ")
+            .toUpperCase();
+            if(continuar.charAt(0)=='S'){
+                opciones=tre.read(0, mensaje); 
+            }else{ opciones=0;}            
+            }
+
         }while (opciones!=0);
     }
 
@@ -64,6 +74,11 @@ public class App{
 
     public static void main( String[] args ){
         //menuMain();
+        AnsiConsole.systemInstall();        
+        //System.out.println( color.bgBrightGreen().fg(RED).a("Hello").fg(BLACK).a(" World").reset() );        
+        System.out.println(color.render("Resumen: @|red Neto Total:S/. |@ @|green "+(Math.round(40.54411*100.0)/100.0)+
+        "|@ | @|red IGV: S/.|@ @|green "+(Math.round(15.3333*100.0)/100.0)+"|@  | @|red Monto total: S/. |@ @|green "+
+        (Math.round(53.4100*100.0)/100.0)+"|@"));        
         validAccessSystem();
         //new MainGUI();
     }

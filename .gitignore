@@ -1,6 +1,6 @@
 *.replit
 *.class
-*.jar
+#*.jar
 *.vscode
 **/target/*
 !**/*.go
