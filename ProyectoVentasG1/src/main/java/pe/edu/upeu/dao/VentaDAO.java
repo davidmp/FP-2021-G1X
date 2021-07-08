@@ -121,10 +121,29 @@ public class VentaDAO extends AppCrud{
                     dataFechaV[0].equals(fechaFin)
                     )) {
                         for (int j = 0; j < dataV[0].length; j++) {
-                            dataRealRF[cantidadFi][j]=dataV[i][j];                            
+                            dataRealRF[cantidadFi][j]=dataV[i][j];   
+                            if (j==3) { netoTotalX=netoTotalX+Double.parseDouble(dataV[i][j].toString()); }
+                            if (j==4) { igvX=igvX+Double.parseDouble(dataV[i][j].toString()); }
+                            if (j==5) { precioTotalX=precioTotalX+Double.parseDouble(dataV[i][j].toString()); }
                         }
                 }
             }
+
+            ut.clearConsole();
+            System.out.println("*******************Reporte de Ventas*****************");
+            System.out.println("--------Entre "+fechaInit+" a "+fechaFin+"------------");
+            ut.pintarLine('H', 40);            
+            ut.pintarTextHeadBody('H', 3, "ID,DNI,F.Venta,Neto Total S/.,IGV S/.,P.Total S/.");
+            ut.pintarLine('H', 40);
+            for (Object[] objects : dataRealRF) {
+                String datacontent=""+objects[0]+","+objects[1]+","+objects[2]+","+
+                objects[3]+","+objects[4]+","+objects[5];
+                ut.pintarTextHeadBody('B', 3, datacontent);
+            }
+            System.out.println("");
+            ut.pintarLine('H', 40);
+            
+
 
         } catch (Exception e) {
             //TODO: handle exception
