@@ -89,4 +89,47 @@ public class VentaDAO extends AppCrud{
         }
         System.out.println("");
     }
+
+    public void reportarVentasRangoFecha(){
+        lar=new LeerArchivo("Ventas.txt");
+        System.out.println("************************Reporte de ventas por fechas*************************");
+        String fechaInit=tre.read("", "Ingrese la fecha de Inicio:");
+        String fechaFin=tre.read("", "Ingrese fecha final:");
+        Object[][] dataV=listarContenido(lar);
+        int cantidadFi=0;
+        try {
+            for (int i = 0; i < dataV.length; i++) {
+                String[] dataFechaV=String.valueOf(dataV[i][2]).split(" ");
+                if ((formatoFecha.parse(dataFechaV[0].toString()).after(formatoFecha.parse(fechaInit)) || 
+                    dataFechaV[0].equals(fechaInit))   && (
+                        formatoFecha.parse(dataFechaV[0].toString()).before(formatoFecha.parse(fechaFin)) || 
+                    dataFechaV[0].equals(fechaFin)
+                    )) {
+                        cantidadFi++;
+                }
+            }
+
+            Object[][] dataRealRF=new Object[cantidadFi][dataV[0].length];
+            cantidadFi=0;
+            double netoTotalX=0, igvX=0, precioTotalX=0;
+
+            for (int i = 0; i < dataV.length; i++) {
+                String[] dataFechaV=String.valueOf(dataV[i][2]).split(" ");
+                if ((formatoFecha.parse(dataFechaV[0].toString()).after(formatoFecha.parse(fechaInit)) || 
+                    dataFechaV[0].equals(fechaInit))   && (
+                        formatoFecha.parse(dataFechaV[0].toString()).before(formatoFecha.parse(fechaFin)) || 
+                    dataFechaV[0].equals(fechaFin)
+                    )) {
+                        for (int j = 0; j < dataV[0].length; j++) {
+                            dataRealRF[cantidadFi][j]=dataV[i][j];                            
+                        }
+                }
+            }
+
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
+
+    }
+
 }
