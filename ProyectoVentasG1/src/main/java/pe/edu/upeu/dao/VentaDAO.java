@@ -143,7 +143,10 @@ public class VentaDAO extends AppCrud{
                 ut.pintarTextHeadBody('B', 3, datacontent);
             }            
             ut.pintarLine('H', 40);
-            
+            System.out.println("RESUMEN: Neto.T S/."+(Math.round(netoTotalX*100.0)/100.0)
+            +" | IGV S/."+(Math.round(igvX*100.0)/100.0)
+            +" | Importe Total S/."+(Math.round(precioTotalX*100.0)/100.0));
+            ut.pintarLine('H', 40);
 
 
         } catch (Exception e) {
