@@ -91,10 +91,10 @@ public class VentaDAO extends AppCrud{
     }
 
     public void reportarVentasRangoFecha(){
-        lar=new LeerArchivo("Ventas.txt");
+        lar=new LeerArchivo("Venta.txt");
         System.out.println("************************Reporte de ventas por fechas*************************");
-        String fechaInit=tre.read("", "Ingrese la fecha de Inicio:");
-        String fechaFin=tre.read("", "Ingrese fecha final:");
+        String fechaInit=tre.read("", "Ingrese la fecha de Inicio (dd-MM-yyyy):");
+        String fechaFin=tre.read("", "Ingrese fecha final (dd-MM-yyyy):");
         Object[][] dataV=listarContenido(lar);
         int cantidadFi=0;
         try {
@@ -108,7 +108,7 @@ public class VentaDAO extends AppCrud{
                         cantidadFi++;
                 }
             }
-
+            System.out.println("Cantidad:"+cantidadFi);
             Object[][] dataRealRF=new Object[cantidadFi][dataV[0].length];
             cantidadFi=0;
             double netoTotalX=0, igvX=0, precioTotalX=0;
@@ -126,27 +126,28 @@ public class VentaDAO extends AppCrud{
                             if (j==4) { igvX=igvX+Double.parseDouble(dataV[i][j].toString()); }
                             if (j==5) { precioTotalX=precioTotalX+Double.parseDouble(dataV[i][j].toString()); }
                         }
+                        cantidadFi++;
                 }
             }
 
             ut.clearConsole();
             System.out.println("*******************Reporte de Ventas*****************");
             System.out.println("--------Entre "+fechaInit+" a "+fechaFin+"------------");
+            ut.pintarLine('H', 40);         
+            ut.pintarTextHeadBody('H', 3, "ID,DNI,F.Venta,Neto T. S/.,IGV S/.,P.Total S/.");              
+            System.out.println(""); 
             ut.pintarLine('H', 40);            
-            ut.pintarTextHeadBody('H', 3, "ID,DNI,F.Venta,Neto Total S/.,IGV S/.,P.Total S/.");
-            ut.pintarLine('H', 40);
             for (Object[] objects : dataRealRF) {
                 String datacontent=""+objects[0]+","+objects[1]+","+objects[2]+","+
                 objects[3]+","+objects[4]+","+objects[5];
                 ut.pintarTextHeadBody('B', 3, datacontent);
-            }
-            System.out.println("");
+            }            
             ut.pintarLine('H', 40);
             
 
 
         } catch (Exception e) {
-            //TODO: handle exception
+            System.out.println("Error-------"+e.getMessage());
         }
 
     }

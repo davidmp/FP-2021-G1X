@@ -20,6 +20,7 @@ public class App{
         "\n2=Registrar Producto"+
         "\n3=Registrar Usuario"+
         "\n4=Registrar Venta"+
+        "\n41=Reporte Ventas por fechas"+
         "\n0=Salir del sistema"
         ;     
         CategoriaDAO daoCat;   
@@ -35,6 +36,7 @@ public class App{
                 case 2: proDao=new ProductoDAO(); proDao.registrarProducto(); break;
                 case 3: daoUso=new UsuarioDAO(); daoUso.registrarUsuario();  break;     
                 case 4: ventDao=new VentaDAO(); ventDao.registroVentaGeneral(); break;   
+                case 41: ventDao=new VentaDAO(); ventDao.reportarVentasRangoFecha(); break;   
                 default:System.out.println("Opcion no existe");   break;
             }            
             if (opciones!=0){ 
