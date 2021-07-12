@@ -68,6 +68,41 @@ public class Transformadas {
         imprimirMatrizCadena(matriz);
     }
 
+    public void transformada21(int dimen, int numInit) {
+        String[][] matriz=new String[dimen][dimen];//i=filas, j=columnas
+        for (int j = 0; j <matriz[0].length; j++) {
+            if(j%2==0){
+                for (int i = 0; i < (matriz.length); i++) {            
+                    matriz[i][j]=""+numInit;
+                    numInit++;
+                }
+            }else{
+                for (int i = matriz.length-1; i >=0 ; i--) {            
+                    matriz[i][j]=""+numInit;
+                    numInit++;
+                }
+            }
+        }
+        imprimirMatrizCadena(matriz);
+    }   
+    
+    public void transformada28(int dimen, int numInit) {
+        String[][] matriz=new String[dimen][dimen];//j=filas, i=columnas
+        for (int j = matriz.length-1; j >=0; j--) {
+            if(j%2==0){
+                for (int i = 0; i < (matriz[0].length); i++) {            
+                    matriz[j][i]=""+numInit;
+                    numInit++;
+                }
+            }else{
+                for (int i = matriz[0].length-1; i >=0 ; i--) {            
+                    matriz[j][i]=""+numInit;
+                    numInit++;
+                }
+            }
+        }
+        imprimirMatrizCadena(matriz);
+    }    
 
 
     public static void main(String[] args) {
@@ -77,6 +112,10 @@ public class Transformadas {
         transf.transformada05(5, 0);
         System.out.println("");
         transf.transformada18(5, 0);
+        System.out.println("");
+        transf.transformada21(5, 0);       
+        System.out.println("");
+        transf.transformada28(5, 0);             
       /*  int mA[][]={
             {7,	10,	1},
             {5,	6,	5},
