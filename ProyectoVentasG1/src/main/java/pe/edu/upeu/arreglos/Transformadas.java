@@ -46,11 +46,37 @@ public class Transformadas {
         imprimirMatrizCadena(matriz);
     }
 
+    public void transformada05(int dimen, int numInit) {
+        String[][] matriz=new String[dimen][dimen];//i=filas, j=columnas
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j <= i; j++) {
+                matriz[i][(dimen-1)-j]=""+numInit;
+                numInit++;//numInit+=1; numInit=numInit+1
+            }
+        }
+        imprimirMatrizCadena(matriz);
+    }
+
+    public void transformada18(int dimen, int numInit) {
+        String[][] matriz=new String[dimen][dimen];//i=filas, j=columnas
+        for (int j = matriz[0].length-1; j >=0; j--) {
+            for (int i = 0; i < (matriz.length)-j; i++) {            
+                matriz[i][j]=""+numInit;
+                numInit++;//numInit+=1; numInit=numInit+1
+            }
+        }
+        imprimirMatrizCadena(matriz);
+    }
+
+
+
     public static void main(String[] args) {
         Transformadas transf=new Transformadas();
         transf.transformada01(5, 0);
-
-
+        System.out.println("");
+        transf.transformada05(5, 0);
+        System.out.println("");
+        transf.transformada18(5, 0);
       /*  int mA[][]={
             {7,	10,	1},
             {5,	6,	5},
