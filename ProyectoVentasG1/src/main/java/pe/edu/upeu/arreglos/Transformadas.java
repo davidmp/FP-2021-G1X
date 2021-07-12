@@ -12,7 +12,6 @@ public class Transformadas {
         } 
         imprimirMatriz(mR);
     }
-
     public void imprimirMatriz(int[][] matriz) {
         for (int f = 0; f < matriz.length; f++) {
             for (int c = 0; c < matriz[0].length; c++) {
@@ -20,11 +19,39 @@ public class Transformadas {
             }
             System.out.println("");
         } 
-     }   
+    }   
+    
+    public void imprimirMatrizCadena(String[][] matriz) {
+        for (int f = 0; f < matriz.length; f++) {
+            for (int c = 0; c < matriz[0].length; c++) {
+                if(matriz[f][c]!=null && !matriz[f][c].equals("")){
+                    System.out.print(matriz[f][c]+"\t");
+                }else{
+                    System.out.print("\t");
+                }                
+            }
+            System.out.println("");
+        } 
+    } 
+
+    public void transformada01(int dimen, int numInit) {
+        String[][] matriz=new String[dimen][dimen];//i=filas, j=columnas
+        for (int i = 0; i < matriz.length; i++) {
+             for (int j = 0; j < matriz[0].length; j++) {
+                if(j<dimen-i){
+                    matriz[i][j]=""+(numInit+(i+j)*(i+j+1)/2 + i);
+                }                
+             }
+        }
+        imprimirMatrizCadena(matriz);
+    }
 
     public static void main(String[] args) {
-        Transformadas tansf=new Transformadas();
-        int mA[][]={
+        Transformadas transf=new Transformadas();
+        transf.transformada01(5, 0);
+
+
+      /*  int mA[][]={
             {7,	10,	1},
             {5,	6,	5},
             {4,	3,	7}           
@@ -35,7 +62,7 @@ public class Transformadas {
             {6,	10,	5}           
             }; 
         
-        tansf.sumaMatrices(mA, mB);    
+        tansf.sumaMatrices(mA, mB);  */  
     }
     
 }

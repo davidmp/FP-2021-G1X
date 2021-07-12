@@ -129,24 +129,24 @@ func mainPruebaFibonaci(numero int64){
   go func() {
     defer wg.Done()
     fmt.Println("-----Factorial recursivo-----")
-    fibonacciRecur(numero)
+    go fibonacciRecur(numero)
   }() 
   go func() {
     defer wg.Done()
     fmt.Println("-----Factorial recursivo-----")
-    FactorialBigRecur(numero)
+    go FactorialBigRecur(numero)
   }()    
   
   go func() {
     defer wg.Done()
     fmt.Println("-----Factorial recursivo-----")
-    FactorialBigRecur(numero+1)
+   go FactorialBigRecur(numero+1)
   }()   
 
   go func() {
     defer wg.Done()
     fmt.Println("-----Factorial recursivo-----")
-    FactorialBigRecur(numero+1)
+   go FactorialBigRecur(numero+1)
   }()    
  
 

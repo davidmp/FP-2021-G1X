@@ -22,6 +22,6 @@ public class App {
         System.out.println("Fibonaci recursivo: "+objER.fibonaciRecur(numero)); 
         tf=System.currentTimeMillis();
         System.out.println("Tiempo recursivo:"+ (tf-ti));
-
+        int threadCount = Runtime.getRuntime().availableProcessors();
     }
 }
